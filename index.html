@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aarav Yadav</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
-    <!-- Google Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap"
       rel="stylesheet"
@@ -71,11 +68,9 @@
   </head>
 
   <body class="h-screen flex text-gray-200">
-    <!-- Sidebar -->
     <aside
       class="w-1/3 sidebar text-white p-8 overflow-y-auto shadow-xl sticky top-0 h-screen"
     >
-      <!-- Personal Info -->
       <div class="mb-10">
         <h1 class="text-4xl font-bold tracking-wide">Aarav Yadav</h1>
         <p class="mt-3 text-xl font-semibold text-gray-300">
@@ -86,7 +81,6 @@
         </p>
       </div>
 
-      <!-- Socials -->
       <div class="mb-10">
         <h2 class="text-xl font-semibold mb-3 text-gray-300">Find me on</h2>
         <div class="flex space-x-5 text-2xl">
@@ -115,9 +109,13 @@
         </p>
       </div>
 
-      <!-- Navigation -->
       <nav>
         <ul class="space-y-3">
+          <li>
+            <a href="#canon-physics-demo" class="block py-2 px-4 rounded nav-link"
+              >Canon Physics Demo</a
+            >
+          </li>
           <li>
             <a href="#down-to-the-wire" class="block py-2 px-4 rounded nav-link"
               >Down To The Wire</a
@@ -147,9 +145,24 @@
       </nav>
     </aside>
 
-    <!-- Content -->
     <main class="w-2/3 h-screen overflow-y-auto p-10">
-      <!-- Down To The Wire -->
+       
+       <section id="canon-physics-demo" class="mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-white">Canon Physics Demo</h2>
+        <div class="project-box p-6">
+          <p class="text-gray-300 mb-6 text-lg">
+            Canon Physics Demo Made In JavaScript.
+          </p>
+          <a 
+            href="CanonPhysicsSimulation/index.html" 
+            target="_blank" 
+            class="inline-block bg-portfolio-accent hover:bg-portfolio-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
+          >
+            <i class="fa-solid fa-play mr-2"></i> Play Now!
+          </a>
+        </div>
+      </section>
+
       <section id="down-to-the-wire" class="mb-16">
         <h2 class="text-3xl font-bold mb-6 text-white">Down To The Wire</h2>
         <div class="project-box p-6">
@@ -162,7 +175,6 @@
         </div>
       </section>
 
-      <!-- VR Whiteboard -->
       <section id="vr-whiteboard" class="mb-16">
         <h2 class="text-3xl font-bold mb-6 text-white">VR Whiteboard</h2>
         <div class="project-box p-6">
@@ -174,8 +186,7 @@
           </p>
         </div>
       </section>
-            <!-- Turbo Shader Driving Simulator -->
-      <section id="driving-sim" class="mb-16">
+            <section id="driving-sim" class="mb-16">
         <h2 class="text-3xl font-bold mb-6 text-white">Turbo Shader Driving Simulator</h2>
         <div class="project-box p-6">
           <video controls class="w-full mb-4 rounded-lg shadow-lg">
@@ -187,7 +198,6 @@
         </div>
       </section>
 
-      <!-- Websites -->
       <section id="websites" class="mb-16">
         <h2 class="text-3xl font-bold mb-6 text-white">Websites</h2>
         <div class="grid gap-6">
@@ -231,12 +241,10 @@
         </div>
       </section>
 
-      <!-- Projects -->
       <section id="projects" class="mb-16">
         <h2 class="text-3xl font-bold mb-6 text-white">Projects</h2>
         <ul class="grid gap-6">
-           <!-- Alpha Compositer -->
-          <li class="project-box p-6">
+           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">Alpha Compositer</span>
               <a
@@ -264,7 +272,6 @@
               Generate and Triangle Koch Snowflake using OpenGL
             </p>
           </li>
-          <!-- Cookie Clicker -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">Cookie Clicker</span>
@@ -280,7 +287,6 @@
             </p>
           </li>
 
-          <!-- C Number System Converter -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">C Number System Converter</span>
@@ -297,7 +303,6 @@
             </p>
           </li>
 
-          <!-- 4 Bit Number Counter -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">4 Bit Number Counter</span>
@@ -314,7 +319,6 @@
             </p>
           </li>
 
-          <!-- Weather App -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">Weather App</span>
@@ -330,7 +334,6 @@
             </p>
           </li>
 
-          <!-- Hyrule Compendium -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">Hyrule Compendium</span>
@@ -349,7 +352,6 @@
             </p>
           </li>
 
-          <!-- GPS Distance Finder -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">GPS Distance Finder</span>
@@ -365,7 +367,6 @@
             </p>
           </li>
 
-          <!-- Finite State Machine -->
           <li class="project-box p-6">
             <div class="flex items-center justify-between">
               <span class="font-semibold text-xl">Finite State Machine</span>
