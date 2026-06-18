@@ -20,10 +20,10 @@
         theme: {
           extend: {
             colors: {
-              "portfolio-dark": "#0f172a",
-              "portfolio-darker": "#0a1120",
-              "portfolio-accent": "#3b82f6",
-              "portfolio-accent-dark": "#1d4ed8",
+              "portfolio-dark":       "#0f172a",
+              "portfolio-darker":     "#0a1120",
+              "portfolio-accent":     "#3b82f6",
+              "portfolio-accent-dark":"#1d4ed8",
             },
             fontFamily: {
               inter: ["Inter", "sans-serif"],
@@ -34,373 +34,747 @@
     </script>
 
     <style>
+      html { scroll-behavior: smooth; }
+
       body {
         font-family: "Inter", sans-serif;
         background-color: #0a1120;
         background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
       }
+
+      /* ── cards ── */
       .project-box {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
         border-radius: 0.75rem;
         transition: all 0.3s ease;
       }
       .project-box:hover {
-        transform: translateY(-5px) scale(1.02);
+        transform: translateY(-4px) scale(1.015);
         border-color: #3b82f6;
-        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 8px 24px rgba(59,130,246,0.25);
       }
+
+      /* ── sidebar ── */
       .sidebar {
-        background: linear-gradient(180deg, #0f172a, #0a1120);
+        background: linear-gradient(180deg, #0f172a 0%, #0a1120 100%);
       }
-      .nav-link {
-        transition: all 0.3s ease;
-      }
+      .nav-link { transition: all 0.25s ease; }
       .nav-link:hover {
-        background-color: rgba(59, 130, 246, 0.2);
+        background-color: rgba(59,130,246,0.18);
         color: #3b82f6;
       }
       .active-link {
-        background-color: rgba(59, 130, 246, 0.4) !important;
-        color: white !important;
+        background-color: rgba(59,130,246,0.35) !important;
+        color: #fff !important;
+      }
+
+      /* ── pill tags ── */
+      .tag {
+        display: inline-block;
+        background: rgba(59,130,246,0.12);
+        border: 1px solid rgba(59,130,246,0.32);
+        color: #93c5fd;
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 0.12rem 0.5rem;
+        border-radius: 9999px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      /* ── job cards ── */
+      .job-box {
+        background: rgba(255,255,255,0.04);
+        border-left: 3px solid #3b82f6;
+        border-radius: 0.5rem;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* ── highlighted numbers ── */
+      .metric { color: #60a5fa; font-weight: 600; }
+
+      /* ── section divider label ── */
+      .section-sub {
+        color: #4b5563;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ── skill grid ── */
+      .skill-group { margin-bottom: 0.85rem; }
+      .skill-group-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #4b5563;
+        margin-bottom: 0.4rem;
       }
     </style>
   </head>
 
   <body class="h-screen flex text-gray-200">
-    
-    <button id="mobile-menu-btn" class="md:hidden fixed top-5 left-5 z-40 p-3 bg-portfolio-darker rounded border border-gray-700 text-white shadow-lg focus:outline-none">
+
+    <!-- mobile hamburger -->
+    <button id="mobile-menu-btn"
+      class="md:hidden fixed top-5 left-5 z-40 p-3 bg-portfolio-darker rounded border border-gray-700 text-white shadow-lg focus:outline-none">
       <i class="fa-solid fa-bars text-xl"></i>
     </button>
 
-    <aside
-      id="sidebar"
-      class="w-full md:w-1/3 fixed md:sticky top-0 left-0 h-screen z-50 sidebar text-white p-8 overflow-y-auto shadow-xl transform md:translate-x-0 transition-transform duration-300 ease-in-out"
-    >
-      <button id="close-menu-btn" class="md:hidden absolute top-6 right-8 text-gray-400 hover:text-white text-3xl focus:outline-none">
+    <!-- ═══════════════════════════════ SIDEBAR ═══════════════════════════════ -->
+    <aside id="sidebar"
+      class="w-full md:w-1/3 fixed md:sticky top-0 left-0 h-screen z-50 sidebar text-white p-7 overflow-y-auto shadow-xl
+             transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+
+      <button id="close-menu-btn"
+        class="md:hidden absolute top-6 right-7 text-gray-400 hover:text-white text-3xl focus:outline-none">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <div class="mb-10 mt-8 md:mt-0">
-        <h1 class="text-4xl font-bold tracking-wide">Aarav Yadav</h1>
-        <p class="mt-3 text-xl font-semibold text-gray-300">
-          Software Engineer • Game Developer • XR Developer • Mathematics
+      <!-- name + tagline -->
+      <div class="mb-8 mt-8 md:mt-0">
+        <h1 class="text-3xl font-bold tracking-wide leading-tight">Aarav Yadav</h1>
+        <p class="mt-2 text-base font-semibold text-blue-400 leading-snug">
+          Computer Vision &bull; Systems Eng &bull; XR &bull; Math
         </p>
-        <p class="mt-6 text-lg text-gray-400">
-          CS and Math at Rutgers University
+        <p class="mt-3 text-xs text-gray-400 leading-relaxed">
+          CS &amp; Math @ Rutgers University &mdash; building low-latency
+          perception pipelines, real-time simulation, and spatial&nbsp;AI
+          infrastructure.
         </p>
       </div>
 
-      <div class="mb-10">
-        <h2 class="text-xl font-semibold mb-3 text-gray-300">Find me on</h2>
-        <div class="flex space-x-5 text-2xl">
-          <a href="https://github.com/AaravyOTH" target="_blank" class="hover:text-portfolio-accent">
+      <!-- education -->
+      <div class="mb-7">
+        <p class="skill-group-label">Education</p>
+        <p class="text-sm font-semibold text-gray-200">Rutgers University</p>
+        <p class="text-xs text-gray-400 mt-0.5">B.S. Computer Science &amp; Mathematics</p>
+        <p class="text-xs text-gray-500 mt-0.5">Dec 2027 &nbsp;&middot;&nbsp; GPA 3.40</p>
+      </div>
+
+      <!-- links -->
+      <div class="mb-7">
+        <p class="skill-group-label">Find me on</p>
+        <div class="flex space-x-4 text-xl mb-3">
+          <a href="https://github.com/ayadav348" target="_blank"
+            class="hover:text-portfolio-accent transition-colors" title="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/aarav-yadav-b860b4286/" target="_blank" class="hover:text-portfolio-accent">
+          <a href="https://www.linkedin.com/in/aaravayadav/" target="_blank"
+            class="hover:text-portfolio-accent transition-colors" title="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
+          <a href="https://www.npmjs.com/package/git-vector" target="_blank"
+            class="hover:text-portfolio-accent transition-colors" title="npm &mdash; git-vector">
+            <i class="fab fa-npm"></i>
+          </a>
         </div>
-        <p class="mt-4 text-gray-400">
-          Email:
-          <a href="mailto:aaravayadav@outlook.com" class="underline hover:text-portfolio-accent">aaravayadav@outlook.com</a>
+        <p class="text-xs text-gray-400">
+          <a href="mailto:aaravayadav@outlook.com"
+            class="underline hover:text-portfolio-accent">aaravayadav@outlook.com</a>
         </p>
+        <p class="text-xs text-gray-500 mt-0.5">732-783-6425</p>
       </div>
 
+      <!-- skills -->
+      <div class="mb-7">
+        <p class="skill-group-label">Skills</p>
+
+        <div class="skill-group">
+          <p class="skill-group-label" style="color:#374151">Languages</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">C++</span><span class="tag">Python</span>
+            <span class="tag">GLSL</span><span class="tag">C#</span>
+            <span class="tag">Java</span><span class="tag">Bash</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label" style="color:#374151">Libraries / Frameworks</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">OpenCV</span><span class="tag">Eigen3</span>
+            <span class="tag">PyTorch</span><span class="tag">TensorRT</span>
+            <span class="tag">FastAPI</span><span class="tag">pgvector</span>
+            <span class="tag">PyArrow</span><span class="tag">OpenXR</span>
+            <span class="tag">Godot</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label" style="color:#374151">Systems &amp; Tools</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Git</span><span class="tag">CMake</span>
+            <span class="tag">Docker</span><span class="tag">Linux</span>
+            <span class="tag">Proxmox</span><span class="tag">Ollama</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-label" style="color:#374151">Research Domains</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">IPM</span>
+            <span class="tag">MOT</span>
+            <span class="tag">State Estimation</span>
+            <span class="tag">Sensor Fusion</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- nav -->
       <nav>
-        <ul class="space-y-3">
-          <li><a href="#canon-physics-demo" class="block py-2 px-4 rounded nav-link">Canon Physics Demo</a></li>
-          <li><a href="#down-to-the-wire" class="block py-2 px-4 rounded nav-link">Down To The Wire</a></li>
-          <li><a href="#vr-whiteboard" class="block py-2 px-4 rounded nav-link">VR Whiteboard</a></li>
-          <li><a href="#driving-sim" class="block py-2 px-4 rounded nav-link">Turbo Shader Driving Simulator</a></li>
-          <li><a href="#websites" class="block py-2 px-4 rounded nav-link">Websites</a></li>
-          <li><a href="#projects" class="block py-2 px-4 rounded nav-link">Projects</a></li>
+        <p class="skill-group-label">Sections</p>
+        <ul class="space-y-0.5">
+          <li><a href="#experience"      class="block py-1.5 px-3 rounded nav-link text-xs">Work Experience</a></li>
+          <li><a href="#bev-tracking"    class="block py-1.5 px-3 rounded nav-link text-xs">BEV Tracking Pipeline</a></li>
+          <li><a href="#spatial-telemetry" class="block py-1.5 px-3 rounded nav-link text-xs">Spatial Telemetry Engine</a></li>
+          <li><a href="#driving-sim"     class="block py-1.5 px-3 rounded nav-link text-xs">Shader Driving Simulator</a></li>
+          <li><a href="#vr-whiteboard"   class="block py-1.5 px-3 rounded nav-link text-xs">VR Whiteboard</a></li>
+          <li><a href="#down-to-the-wire" class="block py-1.5 px-3 rounded nav-link text-xs">Down To The Wire</a></li>
+          <li><a href="#canon-physics-demo" class="block py-1.5 px-3 rounded nav-link text-xs">Canon Physics Demo</a></li>
+          <li><a href="#websites"        class="block py-1.5 px-3 rounded nav-link text-xs">Websites &amp; Tools</a></li>
+          <li><a href="#projects"        class="block py-1.5 px-3 rounded nav-link text-xs">More Projects</a></li>
+          <li><a href="#activities"      class="block py-1.5 px-3 rounded nav-link text-xs">Activities</a></li>
         </ul>
       </nav>
     </aside>
 
-    <main class="w-full md:w-2/3 h-screen overflow-y-auto p-6 pt-24 md:p-10">
-        
-       <section id="canon-physics-demo" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">Canon Physics Demo</h2>
+    <!-- ═══════════════════════════════ MAIN ═══════════════════════════════ -->
+    <main id="main-scroll" class="w-full md:w-2/3 h-screen overflow-y-auto p-6 pt-20 md:p-10 md:pt-10">
+
+      <!-- ── WORK EXPERIENCE ── -->
+      <section id="experience" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Work Experience</h2>
+        <p class="section-sub">Industry</p>
+
+        <!-- Reliance Jio -->
+        <div class="job-box">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <div>
+              <span class="text-lg font-semibold text-white">AI/ML Software Engineer Intern</span>
+              <span class="ml-2 text-portfolio-accent font-medium text-sm">@ Reliance Jio</span>
+            </div>
+            <span class="text-gray-500 text-xs whitespace-nowrap">June 2026 &ndash; July 2026 &middot; Mumbai, India</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="tag">Python</span><span class="tag">PyTorch</span>
+            <span class="tag">pgvector</span><span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span><span class="tag">libvirt</span>
+          </div>
+          <ul class="space-y-2 text-gray-300 text-sm">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Scaled data infrastructure throughput by <span class="metric">&thinsp;42%&thinsp;</span>
+              across an enterprise network serving <span class="metric">450M+</span> active users by
+              engineering asynchronous, multi-threaded backend workers and optimizing high-dimensional
+              tensor transformations within isolated guest libvirt bridge topologies.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Reduced runtime database latency by <span class="metric">&thinsp;85%&thinsp;</span>
+              across petabyte-scale telemetry matrices by optimizing native pgvector spatial distance
+              queries and implementing local embedding layers to streamline model loading pipelines.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Outreach VR -->
+        <div class="job-box">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <div>
+              <span class="text-lg font-semibold text-white">Software Engineer</span>
+              <span class="ml-2 text-portfolio-accent font-medium text-sm">@ Outreach VR</span>
+            </div>
+            <span class="text-gray-500 text-xs whitespace-nowrap">May 2026 &ndash; Present &middot; Remote</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="tag">OpenXR</span><span class="tag">GLSL</span>
+            <span class="tag">C#</span><span class="tag">Node.js</span>
+            <span class="tag">VR</span><span class="tag">npm</span>
+          </div>
+          <ul class="space-y-2 text-gray-300 text-sm">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Maintained a locked <span class="metric">&thinsp;90 FPS&thinsp;</span> target for a
+              multiplayer VR game under peak physics load by optimizing graphics rendering.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Built and published
+              <a href="https://www.npmjs.com/package/git-vector" target="_blank"
+                class="text-portfolio-accent underline hover:text-blue-300">git-vector</a>,
+              an open-source CLI engine for multi-repository state tracking; scaled to
+              <span class="metric">800+</span> global downloads on npm with hardened,
+              shell-injection-safe execution via
+              <code class="bg-white/10 px-1 rounded text-xs">execFileAsync</code> wrappers.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── BEV TRACKING PIPELINE ── -->
+      <section id="bev-tracking" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Sim-to-Real Bird&rsquo;s Eye View Tracking Pipeline</h2>
+        <p class="section-sub">Computer Vision &middot; State Estimation &middot; C++</p>
         <div class="project-box p-6">
-          <p class="text-gray-300 mb-6 text-lg">
-            Canon Physics Demo Made In JavaScript.
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">C++</span><span class="tag">OpenCV</span>
+            <span class="tag">Eigen3</span><span class="tag">PyTorch</span>
+            <span class="tag">Kalman Filter</span><span class="tag">Waymo Dataset</span>
+            <span class="tag">June 2025 &ndash; Present</span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm mb-5">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Achieved a <span class="metric">132&times; real-time speedup</span>
+              (425.5&thinsp;ms &rarr; 3.22&thinsp;ms per frame, enabling 300+&thinsp;FPS) by building
+              an adaptive Inverse Perspective Mapping engine that pre-computes camera calibrations
+              into boot-time memory-mapped Look-Up Tables.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Developed a custom <span class="metric">heap-allocation-free 4D Kalman Filter</span>
+              using fixed-size Eigen matrices, reducing tracking initialization lag by 43.2% and
+              sustaining tracking through 500&thinsp;ms occlusions with error bounded to
+              &lt;1.34&thinsp;m via Constant-Velocity prediction.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Implemented full monocular camera calibration (pinhole intrinsic/extrinsic models,
+              checkerboard-based homography) to map 2D perspective pixels to an undistorted 3D ground
+              plane relative to the vehicle, validated against the Waymo Open Dataset.
+            </li>
+          </ul>
+          <a href="https://github.com/ayadav348" target="_blank"
+            class="inline-flex items-center gap-2 text-portfolio-accent hover:text-blue-300 text-sm font-medium transition-colors">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+      </section>
+
+      <!-- ── SPATIAL TELEMETRY ENGINE ── -->
+      <section id="spatial-telemetry" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Spatial Telemetry Engine</h2>
+        <p class="section-sub">Retrieval-Augmented AV Logs &middot; Vector DB &middot; Python</p>
+        <div class="project-box p-6">
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span>
+            <span class="tag">pgvector</span><span class="tag">Ollama</span>
+            <span class="tag">SentenceTransformers</span>
+            <span class="tag">nuScenes</span><span class="tag">Waymo</span>
+            <span class="tag">June 2025 &ndash; Present</span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm mb-5">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Engineered a retrieval-augmented pipeline that serializes multi-sensor AV logs
+              (nuScenes/Waymo), including camera extrinsics [R|t], ego-vehicle kinematics, and 3D
+              bounding box trajectories, into localized spatial-temporal windows indexed via pgvector
+              cosine distance, achieving <span class="metric">sub-5&thinsp;ms lookup latency</span>.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Migrated embedding generation from external Ollama daemons to an in-process
+              SentenceTransformer
+              (<code class="bg-white/10 px-1 rounded text-xs">all-MiniLM-L6-v2</code>),
+              eliminating timeout constraints and achieving a
+              <span class="metric">100% state-vector extraction success rate</span>
+              under live Waymo streaming.
+            </li>
+          </ul>
+          <a href="https://github.com/ayadav348" target="_blank"
+            class="inline-flex items-center gap-2 text-portfolio-accent hover:text-blue-300 text-sm font-medium transition-colors">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+      </section>
+
+      <!-- ── DRIVING SIM ── -->
+      <section id="driving-sim" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Shader-Based Speed Perception Driving Simulator</h2>
+        <p class="section-sub">GLSL &middot; Godot &middot; Perceptual Research</p>
+        <div class="project-box p-6">
+          <video controls class="w-full mb-5 rounded-lg shadow-lg">
+            <source src="drivingsim.mp4" type="video/mp4" />
+          </video>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">Godot</span><span class="tag">GDScript</span>
+            <span class="tag">GLSL</span><span class="tag">Vertex Shaders</span>
+            <span class="tag">Fragment Shaders</span><span class="tag">Dec 2025</span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Reduced CPU/GPU load by <span class="metric">50%</span> vs. physics-driven alternatives
+              using a custom GLSL vertex/fragment distortion shader pipeline to simulate peripheral
+              velocity cues.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Demonstrated that shader-driven spatial manipulation produces strong perceived
+              acceleration at constant linear velocity; validated with full Logitech sim wheel/pedal
+              hardware integration.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── VR WHITEBOARD ── -->
+      <section id="vr-whiteboard" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">VR Whiteboard</h2>
+        <p class="section-sub">XR &middot; Unity &middot; Azure DevOps</p>
+        <div class="project-box p-6">
+          <video controls class="w-full mb-5 rounded-lg shadow-lg">
+            <source src="vrwhiteboard.mp4" type="video/mp4" />
+          </video>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">Unity</span><span class="tag">C#</span>
+            <span class="tag">OpenXR</span><span class="tag">Oculus</span>
+            <span class="tag">Azure DevOps</span><span class="tag">Aug 2025</span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm">
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Designed a real-time pixel interpolation algorithm for line smoothing in an immersive VR
+              drawing application, deployed across standalone XR headsets via OpenXR tracking
+              extensions.
+            </li>
+            <li class="flex gap-2">
+              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
+              Automated build and regression testing via an Azure DevOps CI/CD pipeline, eliminating
+              manual deployment overhead.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── DOWN TO THE WIRE ── -->
+      <section id="down-to-the-wire" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Down To The Wire</h2>
+        <p class="section-sub">Multiplayer FPS &middot; Godot</p>
+        <div class="project-box p-6">
+          <video controls class="w-full mb-5 rounded-lg shadow-lg">
+            <source src="dtw.mp4" type="video/mp4" />
+          </video>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">Godot</span><span class="tag">GDScript</span>
+            <span class="tag">Multiplayer</span><span class="tag">Networking</span>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Multiplayer first-person shooter built with Godot Engine, featuring networked player
+            movement, hit detection, and real-time game state synchronization.
           </p>
-          <a 
-            href="CanonPhysicsSimulation/index.html" 
-            target="_blank" 
-            class="inline-block bg-portfolio-accent hover:bg-portfolio-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
-          >
+        </div>
+      </section>
+
+      <!-- ── CANON PHYSICS DEMO ── -->
+      <section id="canon-physics-demo" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Canon Physics Demo</h2>
+        <p class="section-sub">WebGL &middot; Three.js &middot; Interactive</p>
+        <div class="project-box p-6">
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="tag">JavaScript</span><span class="tag">Three.js</span>
+            <span class="tag">WebGL</span><span class="tag">dat.GUI</span>
+          </div>
+          <p class="text-gray-300 text-sm mb-5">
+            4-camera split-screen WebGL physics simulation featuring two player-controlled cannons
+            (WASD + IJKL), elastic cannonball collision detection, explosion particle systems, and
+            real-time dat.GUI controls for angle, speed, and firing.
+          </p>
+          <a href="CanonPhysicsSimulation/index.html" target="_blank"
+            class="inline-block bg-portfolio-accent hover:bg-portfolio-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
             <i class="fa-solid fa-play mr-2"></i> Play Now!
           </a>
         </div>
       </section>
 
-      <section id="down-to-the-wire" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">Down To The Wire</h2>
-        <div class="project-box p-6">
-          <video controls class="w-full mb-4 rounded-lg shadow-lg">
-            <source src="dtw.mp4" type="video/mp4" />
-          </video>
-          <p class="text-gray-300">
-            Multiplayer FPS Game built with Godot Engine.
-          </p>
-        </div>
-      </section>
-
-      <section id="vr-whiteboard" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">VR Whiteboard</h2>
-        <div class="project-box p-6">
-          <video controls class="w-full mb-4 rounded-lg shadow-lg">
-            <source src="vrwhiteboard.mp4" type="video/mp4" />
-          </video>
-          <p class="text-gray-300">
-            VR Drawing and Notetaking App made in Unity.
-          </p>
-        </div>
-      </section>
-            <section id="driving-sim" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">Turbo Shader Driving Simulator</h2>
-        <div class="project-box p-6">
-          <video controls class="w-full mb-4 rounded-lg shadow-lg">
-            <source src="drivingsim.mp4" type="video/mp4" />
-          </video>
-          <p class="text-gray-300">
-            Driving Simulator utilizing shaders to simulate speed efficiently in Godot
-          </p>
-        </div>
-      </section>
-
+      <!-- ── WEBSITES & TOOLS ── -->
       <section id="websites" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">Websites</h2>
-        <div class="grid gap-6">
-          <div class="project-box p-6">
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-semibold text-xl">This Portfolio Website</span>
-              <a
-                href="https://github.com/AaravyOTH/AaravyOTH"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-            <p class="text-gray-300">Built with Tailwind and GitHub Pages.</p>
-          </div>
+        <h2 class="text-3xl font-bold mb-1 text-white">Websites &amp; Tools</h2>
+        <p class="section-sub">Published &amp; Deployed</p>
+        <div class="grid gap-5">
 
           <div class="project-box p-6">
             <div class="flex items-center justify-between mb-2">
-              <span class="font-semibold text-xl"
-                >RU Origami Club Website</span
-              >
+              <span class="font-semibold text-lg">git-vector</span>
               <div class="flex space-x-3">
-                <a
-                  href="https://www.ruorigamiclub.org"
-                  target="_blank"
-                  class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                  ><i class="fa-solid fa-globe"></i
-                ></a>
-                <a
-                  href="https://github.com/AaravyOTH/origamiclub"
-                  target="_blank"
-                  class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                  ><i class="fab fa-github"></i
-                ></a>
+                <a href="https://www.npmjs.com/package/git-vector" target="_blank"
+                  class="text-portfolio-accent hover:text-blue-300 text-2xl transition-colors" title="npm">
+                  <i class="fab fa-npm"></i>
+                </a>
+                <a href="https://github.com/ayadav348" target="_blank"
+                  class="text-portfolio-accent hover:text-blue-300 text-xl transition-colors" title="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
               </div>
             </div>
-            <p class="text-gray-300">
-              Official website for the Rutgers Origami Club.
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="tag">Node.js</span><span class="tag">CLI</span>
+              <span class="tag">npm</span><span class="tag">800+ downloads</span>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Open-source CLI engine for multi-repository state tracking. Hardened against shell
+              injection via <code class="bg-white/10 px-1 rounded text-xs">execFileAsync</code>
+              wrappers. Published on npm with 800+ global downloads.
             </p>
+          </div>
+
+          <div class="project-box p-6">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold text-lg">RU Origami Club Website</span>
+              <div class="flex space-x-3">
+                <a href="https://www.ruorigamiclub.org" target="_blank"
+                  class="text-portfolio-accent hover:text-blue-300 text-xl transition-colors">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+                <a href="https://github.com/ayadav348/origamiclub" target="_blank"
+                  class="text-portfolio-accent hover:text-blue-300 text-xl transition-colors">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="tag">HTML</span><span class="tag">Tailwind CSS</span>
+              <span class="tag">JavaScript</span><span class="tag">Vercel</span>
+            </div>
+            <p class="text-gray-300 text-sm">
+              Official website for the Rutgers University Origami Club, deployed with Vercel DNS
+              routing.
+            </p>
+          </div>
+
+          <div class="project-box p-6">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold text-lg">This Portfolio</span>
+              <a href="https://github.com/ayadav348/ayadav348.github.io" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-xl transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              <span class="tag">HTML</span><span class="tag">Tailwind CSS</span>
+              <span class="tag">GitHub Pages</span>
+            </div>
+            <p class="text-gray-300 text-sm">Static portfolio built with Tailwind CSS, deployed via GitHub Pages.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── MORE PROJECTS ── -->
+      <section id="projects" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">More Projects</h2>
+        <p class="section-sub">Graphics, Systems &amp; Earlier Work</p>
+        <ul class="grid gap-4">
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">Alpha Compositer</span>
+              <a href="https://github.com/ayadav348/AlphaCompositer" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">C++</span><span class="tag">OpenGL</span>
+              <span class="tag">Image Processing</span>
+            </div>
+            <p class="text-gray-300 text-sm">Image overlayer with alpha blending.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">2D and 3D Koch Snowflake</span>
+              <a href="https://github.com/ayadav348/KochSnowflake" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">C++</span><span class="tag">OpenGL</span>
+              <span class="tag">Fractals</span>
+            </div>
+            <p class="text-gray-300 text-sm">Recursive Koch Snowflake generation in 2D and 3D using OpenGL.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">C Number System Converter</span>
+              <a href="https://github.com/ayadav348/CNumberSystemConverter" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">C</span><span class="tag">Systems</span>
+            </div>
+            <p class="text-gray-300 text-sm">Converts between Binary, One&rsquo;s Complement, Two&rsquo;s Complement, Decimal, Signed Magnitude, and IEEE&nbsp;754.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">4-Bit Number Counter</span>
+              <a href="https://circuitverse.org/users/304806/projects/4bitcounter-add6b9f1-3489-44b6-8ed4-779c10b4c54a"
+                target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fa-solid fa-window-restore"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">CircuitVerse</span><span class="tag">Digital Logic</span>
+            </div>
+            <p class="text-gray-300 text-sm">Visual circuit with LED display; 4-bit binary timer input. Built in CircuitVerse.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">Finite State Machine</span>
+              <a href="https://circuitverse.org/users/304806/projects/finitestatemachine"
+                target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fa-solid fa-window-restore"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">CircuitVerse</span><span class="tag">Digital Logic</span>
+            </div>
+            <p class="text-gray-300 text-sm">FSM tracking x&nbsp;mod&nbsp;8, updating state from a 1-bit input via decoder and logic gates.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">Weather App</span>
+              <a href="https://github.com/ayadav348/WeatherProject" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">Java</span><span class="tag">Android</span>
+            </div>
+            <p class="text-gray-300 text-sm">Android app that returns weather data for a user-supplied ZIP code.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">Hyrule Compendium</span>
+              <a href="https://github.com/ayadav348/HyruleCompendium" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">Java</span><span class="tag">Android</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <p class="text-gray-300 text-sm">Android app that searches Breath of the Wild data via a public API and persists results in Firebase.</p>
+          </li>
+
+          <li class="project-box p-5">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-semibold">GPS Distance Finder</span>
+              <a href="https://github.com/ayadav348/GPSDistanceCalculator" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 text-lg transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              <span class="tag">Java</span><span class="tag">Android</span>
+              <span class="tag">GPS</span>
+            </div>
+            <p class="text-gray-300 text-sm">Android app that calculates the distance between two user-selected locations.</p>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ── ACTIVITIES ── -->
+      <section id="activities" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">Activities &amp; Leadership</h2>
+        <p class="section-sub">Campus &amp; Community</p>
+
+        <div class="job-box mb-5">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
+            <div>
+              <span class="text-base font-semibold text-white">Web Developer &amp; Board Member</span>
+              <span class="ml-2 text-portfolio-accent font-medium text-sm">@ RU Origami Club</span>
+            </div>
+            <span class="text-gray-500 text-xs whitespace-nowrap">Sep 2024 &ndash; Present &middot; New Brunswick, NJ</span>
+          </div>
+          <p class="text-gray-300 text-sm mt-2">
+            Designed and deployed
+            <a href="https://www.ruorigamiclub.org" target="_blank"
+              class="text-portfolio-accent underline hover:text-blue-300">ruorigamiclub.org</a>
+            using HTML, Tailwind CSS, JavaScript, and Vercel DNS routing.
+          </p>
+        </div>
+
+        <div class="project-box p-5">
+          <p class="text-sm font-semibold text-gray-300 mb-3">Affiliations</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">oSTEM</span>
+            <span class="tag">Rewriting the Code</span>
+            <span class="tag">CodePath SWE Track</span>
+            <span class="tag">Rutgers IEEE</span>
+            <span class="tag">RUSLUG</span>
+            <span class="tag">Out in Tech</span>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="mb-16">
-        <h2 class="text-3xl font-bold mb-6 text-white">Projects</h2>
-        <ul class="grid gap-6">
-           <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">Alpha Compositer</span>
-              <a
-                href="https://github.com/AaravyOTH/AlphaCompositer"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Image Overlayer with Alpha Blending 
-            </p>
-          </li>
-         <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">2D and 3D Koch Snowflake</span>
-              <a
-                href="https://github.com/AaravyOTH/KochSnowflake"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Generate and Triangle Koch Snowflake using OpenGL
-            </p>
-          </li>
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">Cookie Clicker</span>
-              <a
-                href="https://github.com/AaravyOTH/CookieClicker"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Android Game inspired by Cookie Clicker.
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">C Number System Converter</span>
-              <a
-                href="https://github.com/AaravyOTH/CNumberSystemConverter"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              A program written in C that lets the user convert a number between
-              number systems. (Binary, One's Compliment, Two's Complement,
-              Decimal, Signed Magnitude, IEEE754 Binary, etc.)
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">4 Bit Number Counter</span>
-              <a
-                href="https://circuitverse.org/users/304806/projects/4bitcounter-add6b9f1-3489-44b6-8ed4-779c10b4c54a"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fa-solid fa-window-restore"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Visual Circuit of a 4 bit number counter. The LEDs display how
-              many ticks left until the timer finishes. The amount of time is
-              set in binary using the 4 bit input. Created through Circuit Verse.
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">Weather App</span>
-              <a
-                href="https://github.com/AaravyOTH/WeatherProject"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Android App that allows user to find out the weather information
-              of an inputted zipcode.
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">Hyrule Compendium</span>
-              <a
-                href="https://github.com/AaravyOTH/HyruleCompendium"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Android App that utilizes Google Firebase. Users can search for
-              information in Nintendo's The Legend Of Zelda: Breath Of The Wild.
-              The User can then save those searches in a Firebase database,
-              which is then called from to repopulate the already searched items
-              on relogin.
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">GPS Distance Finder</span>
-              <a
-                href="https://github.com/AaravyOTH/GPSDistanceCalculator/tree/master"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fab fa-github"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Android App that allows a user to find the distance between two
-              locations.
-            </p>
-          </li>
-
-          <li class="project-box p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-semibold text-xl">Finite State Machine</span>
-              <a
-                href="https://circuitverse.org/users/304806/projects/finitestatemachine"
-                target="_blank"
-                class="text-portfolio-accent hover:text-portfolio-accent-dark text-2xl"
-                ><i class="fa-solid fa-window-restore"></i></a>
-            </div>
-            <p class="mt-3 text-gray-300">
-              Visual Circuit of a Finite State Machine that tracks the value of
-              x mod 8, updating its state based on a 1-bit input by computing
-              the next state with a decoder and logic gates. Created through
-              Circuit Verse.
-            </p>
-          </li>
-        </ul>
-      </section>
     </main>
 
     <script>
-      // Highlight active nav link on scroll
-      //lottiefiles
-      window.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
-        let current = "";
-        sections.forEach((sec) => {
-          const top = sec.offsetTop - 100;
-          if (scrollY >= top) current = sec.id;
+      // ── scroll-spy (listens on the scrollable main container) ──
+      const mainEl = document.getElementById('main-scroll');
+
+      mainEl.addEventListener('scroll', () => {
+        const sections  = mainEl.querySelectorAll('section');
+        const navLinks  = document.querySelectorAll('.nav-link');
+        let current = '';
+
+        sections.forEach(sec => {
+          // offsetTop is relative to the offsetParent (main), so compare with scrollTop
+          if (mainEl.scrollTop >= sec.offsetTop - 140) {
+            current = sec.id;
+          }
         });
-        navLinks.forEach((link) => {
-          link.classList.remove("active-link");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active-link");
+
+        navLinks.forEach(link => {
+          link.classList.toggle('active-link',
+            link.getAttribute('href') === `#${current}`);
+        });
+      });
+
+      // ── smooth-scroll anchors inside main ──
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', e => {
+          const targetId = link.getAttribute('href').slice(1);
+          const target   = document.getElementById(targetId);
+          if (target) {
+            e.preventDefault();
+            mainEl.scrollTo({ top: target.offsetTop - 32, behavior: 'smooth' });
           }
         });
       });
 
-      // --- NEW MOBILE MENU LOGIC ---
-      const sidebar = document.getElementById('sidebar');
+      // ── mobile sidebar toggle ──
+      const sidebar       = document.getElementById('sidebar');
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const closeMenuBtn = document.getElementById('close-menu-btn');
-      const navLinksArr = document.querySelectorAll('.nav-link');
+      const closeMenuBtn  = document.getElementById('close-menu-btn');
 
-      // Function to open/close sidebar
-      const toggleSidebar = () => {
-        sidebar.classList.toggle('-translate-x-full');
-      };
+      const toggleSidebar = () => sidebar.classList.toggle('-translate-x-full');
 
-      // Event listeners for the buttons
       mobileMenuBtn.addEventListener('click', toggleSidebar);
-      closeMenuBtn.addEventListener('click', toggleSidebar);
+      closeMenuBtn.addEventListener('click',  toggleSidebar);
 
-      // Close the sidebar automatically when a link is clicked on mobile
-      navLinksArr.forEach(link => {
+      document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-          if (window.innerWidth < 768) { // 768px is the 'md' breakpoint
-            sidebar.classList.add('-translate-x-full');
-          }
+          if (window.innerWidth < 768) sidebar.classList.add('-translate-x-full');
         });
       });
     </script>
