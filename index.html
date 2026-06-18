@@ -229,6 +229,7 @@
         <p class="skill-group-label">Sections</p>
         <ul class="space-y-0.5">
           <li><a href="#experience"      class="block py-1.5 px-3 rounded nav-link text-xs">Work Experience</a></li>
+          <li><a href="#git-vector"      class="block py-1.5 px-3 rounded nav-link text-xs">git-vector</a></li>
           <li><a href="#bev-tracking"    class="block py-1.5 px-3 rounded nav-link text-xs">BEV Tracking Pipeline</a></li>
           <li><a href="#spatial-telemetry" class="block py-1.5 px-3 rounded nav-link text-xs">Spatial Telemetry Engine</a></li>
           <li><a href="#driving-sim"     class="block py-1.5 px-3 rounded nav-link text-xs">Shader Driving Simulator</a></li>
@@ -291,8 +292,7 @@
           </div>
           <div class="flex flex-wrap gap-1.5 mb-3">
             <span class="tag">OpenXR</span><span class="tag">GLSL</span>
-            <span class="tag">C#</span><span class="tag">Node.js</span>
-            <span class="tag">VR</span><span class="tag">npm</span>
+            <span class="tag">C#</span><span class="tag">VR</span>
           </div>
           <ul class="space-y-2 text-gray-300 text-sm">
             <li class="flex gap-2">
@@ -300,15 +300,45 @@
               Optimized graphics rendering for a multiplayer VR game to maintain a stable frame rate
               under peak physics load.
             </li>
-            <li class="flex gap-2">
-              <span class="text-blue-400 shrink-0 mt-0.5">&#x25B8;</span>
-              Built and published
-              <a href="https://www.npmjs.com/package/git-vector" target="_blank"
-                class="text-portfolio-accent underline hover:text-blue-300">git-vector</a>,
-              an open-source CLI tool for tracking state across multiple git repositories, with
-              shell-injection-safe subprocess execution. Available on npm.
-            </li>
           </ul>
+        </div>
+      </section>
+
+      <!-- ── GIT-VECTOR ── -->
+      <section id="git-vector" class="mb-16">
+        <h2 class="text-3xl font-bold mb-1 text-white">git-vector</h2>
+        <p class="section-sub">Open Source &middot; CLI &middot; npm</p>
+        <div class="project-box p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tag">Node.js</span>
+              <span class="tag">CLI</span>
+              <span class="tag">npm</span>
+              <span class="tag">Open Source</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="https://www.npmjs.com/package/git-vector" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 transition-colors text-2xl" title="View on npm">
+                <i class="fab fa-npm"></i>
+              </a>
+              <a href="https://github.com/ayadav348/git-vector" target="_blank"
+                class="text-portfolio-accent hover:text-blue-300 transition-colors text-xl" title="View on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-5">
+            A personal open-source CLI tool for tracking and diffing state across multiple git
+            repositories at once. Useful when working across large monorepo-style setups or
+            collections of related repos &mdash; run a single command to see uncommitted changes,
+            branch divergence, and sync status everywhere. Built with hardened subprocess execution
+            via <code class="bg-white/10 px-1 rounded text-xs">execFileAsync</code> to prevent
+            shell injection.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <i class="fab fa-npm text-red-400"></i>
+            <span>Published on npm &middot; 800+ downloads</span>
+          </div>
         </div>
       </section>
 
@@ -452,31 +482,6 @@
         <h2 class="text-3xl font-bold mb-1 text-white">Websites &amp; Tools</h2>
         <p class="section-sub">Published &amp; Deployed</p>
         <div class="grid gap-5">
-
-          <div class="project-box p-6">
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-semibold text-lg">git-vector</span>
-              <div class="flex space-x-3">
-                <a href="https://www.npmjs.com/package/git-vector" target="_blank"
-                  class="text-portfolio-accent hover:text-blue-300 text-2xl transition-colors" title="npm">
-                  <i class="fab fa-npm"></i>
-                </a>
-                <a href="https://github.com/ayadav348" target="_blank"
-                  class="text-portfolio-accent hover:text-blue-300 text-xl transition-colors" title="GitHub">
-                  <i class="fab fa-github"></i>
-                </a>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-1.5 mb-3">
-              <span class="tag">Node.js</span><span class="tag">CLI</span>
-              <span class="tag">npm</span><span class="tag">800+ downloads</span>
-            </div>
-            <p class="text-gray-300 text-sm">
-              Open-source CLI engine for multi-repository state tracking. Hardened against shell
-              injection via <code class="bg-white/10 px-1 rounded text-xs">execFileAsync</code>
-              wrappers. Published on npm with 800+ global downloads.
-            </p>
-          </div>
 
           <div class="project-box p-6">
             <div class="flex items-center justify-between mb-2">
